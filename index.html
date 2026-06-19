@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次相会 · 爱游戏印象志</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f4f1ec;
+            color: #1e1e1e;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0f1318 0%, #1a212b 70%, #0f1318 100%);
+            color: #e8e2da;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle at 30% 50%, rgba(200, 180, 150, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 350;
+            letter-spacing: 0.06em;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 i {
+            font-style: normal;
+            background: linear-gradient(to right, #dac8b0, #f0e6d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #b7aba0;
+            max-width: 36rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(220, 200, 180, 0.2);
+            padding-top: 1.4rem;
+        }
+
+        /* 浅色正文区 */
+        .content-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.8rem 2rem 4rem;
+        }
+
+        .section-card {
+            background: #fffffffa;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03), 0 6px 28px rgba(0, 0, 0, 0.02);
+            padding: 2.2rem 2.4rem;
+            margin-bottom: 2.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.02);
+        }
+
+        .section-card h2 {
+            font-size: 1.7rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            border-left: 4px solid #b08968;
+            padding-left: 1rem;
+            margin-bottom: 1.4rem;
+            color: #2f2a24;
+        }
+
+        .section-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #2e2a26;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #9f7b5c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #dccbbc;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .highlight-link:hover {
+            color: #6f523a;
+            border-bottom-color: #9f7b5c;
+        }
+
+        .accent-tag {
+            display: inline-block;
+            background: #ede6dc;
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #4f3e2e;
+            margin-right: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* 特点/场景小卡片群 — 杂志式网格 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 0.8rem;
+        }
+
+        .feature-item {
+            background: #f7f3ed;
+            border-radius: 20px;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid #eae0d6;
+            transition: background 0.15s;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #2f2a24;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4f463d;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #f7f3ed;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0 0;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.2rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            color: #2f2a24;
+        }
+
+        .faq-summary details {
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #dbcec0;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-summary details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-summary summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #4f3e2e;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-summary summary::before {
+            content: '▸';
+            color: #b08968;
+            margin-right: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-summary details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-summary .answer {
+            padding: 0.6rem 1rem 0.2rem 1.6rem;
+            color: #3f3830;
+            font-size: 0.96rem;
+        }
+
+        /* 页尾 */
+        .site-footer {
+            background: #1a212b;
+            color: #bfb6ab;
+            text-align: center;
+            padding: 2.4rem 2rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #2c353f;
+        }
+
+        .site-footer p {
+            margin: 0.3rem 0;
+        }
+
+        .site-footer .note {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .section-card {
+                padding: 1.6rem 1.2rem;
+            }
+            .section-card h2 {
+                font-size: 1.4rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero .subhead {
+                font-size: 0.98rem;
+            }
+            .content-wrap {
+                padding: 1.8rem 1rem 2.8rem;
+            }
+            .faq-summary {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 2.8rem 1rem 2.2rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>《<i>爱游戏</i>》· 来访手记</h1>
+        <div class="subhead">
+            有些地方，来过便会想再来。<br>
+            收藏一枚书签，为下一次相遇留一扇门。
+        </div>
+    </header>
+
+    <!-- 正文区 -->
+    <main class="content-wrap">
+
+        <!-- 第一段：背景说明 + 再次访问 -->
+        <section class="section-card">
+            <h2>再访 · 一份安静的重逢</h2>
+            <p>
+                如果你上次路过这里，记得存下这个位置。许多人都把<a href="https://official-site-i-game.com.cn" class="highlight-link">爱游戏</a>放进收藏夹里，不为别的，只是觉得某天想回来看看时，它还在。<br>
+                页面不算热闹，但每个角落都透着用心。没有跳转的干扰，没有冗余的弹窗，你可以在任何节奏下慢慢浏览。
+            </p>
+            <p>
+                再次访问不需要理由——也许只是因为记得这里曾有一篇合胃口的介绍，或者某个功能恰好派上了用场。数字生活里，少而精的收藏，比海量书签更让人舒坦。
+            </p>
+        </section>
+
+        <!-- 第二段：特点/场景 卡片网格，自然融入“收藏、持续关注” -->
+        <section class="section-card">
+            <h2>把喜欢的地方留在手边</h2>
+            <p>
+                收藏夹里总有几个常去的地方。<a href="https://official-site-i-game.com.cn" class="highlight-link">爱游戏</a>不希望成为过客，它更愿意成为你偶尔停靠的站点。
+            </p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>📌 书签友好</h3>
+                    <p>结构清晰，长期可用。无论隔多久回来，布局和内容依然整齐。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔄 持续关注</h3>
+                    <p>没有推送轰炸，但每次更新都值得留意。保持距离感，也保持存在感。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🕊️ 低打扰体验</h3>
+                    <p>没有自动播放、没有强制登录。你来或不来，它都在那里。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🌱 内容质感</h3>
+                    <p>不堆砌词汇，不夸张承诺。每段文字都经得起重读。</p>
+                </div>
+            </div>
+            <p style="margin-top: 1.2rem;">
+                收藏其实是一种很轻的约定——你不必每天惦记，但你知道它在那里。
+            </p>
+        </section>
+
+        <!-- 第三段：生活化视角 + FAQ摘要  (再次访问、收藏、持续关注) -->
+        <section class="section-card">
+            <h2>常来常往 · 一些零碎问答</h2>
+            <p>
+                和朋友聊起“网络上的根据地”，有人提到自己把<a href="https://official-site-i-game.com.cn" class="highlight-link">爱游戏</a>放在浏览器书签栏首行。没有特别的理由，只是顺手。<br>
+                或许你也想给它留个位置，下次打开时，不用翻找历史记录。
+            </p>
+
+            <div class="faq-summary">
+                <h3>你可能想问的几件事</h3>
+                <details>
+                    <summary>为什么要特意收藏？</summary>
+                    <div class="answer">
+                        收藏不是为了“必须看”，而是给自己一个随时回来的入口。尤其当你对某个站点的风格有好感，存一下并不费事，却能省去下次搜索的功夫。
+                    </div>
+                </details>
+                <details>
+                    <summary>内容会频繁变化吗？</summary>
+                    <div class="answer">
+                        不会大拆大改。更新以补充和微调为主，保持一贯的调性。你收藏的页面结构始终稳定，不会突然变得陌生。
+                    </div>
+                </details>
+                <details>
+                    <summary>怎么持续关注又不被打扰？</summary>
+                    <div class="answer">
+                        你可以偶尔回来看看，就像翻一本旧杂志。不需要订阅、不需要注册。如果某次打开发现新内容，就当一个小惊喜。
+                    </div>
+                </details>
+            </div>
+
+            <p style="margin-top: 1.4rem;">
+                有句老话说，好地方值得再访。对网页来说，被收藏就是一种温柔的肯定。
+            </p>
+        </section>
+
+        <!-- 页尾访问提示 (不包含点击进入等词) -->
+        <div class="section-card" style="background: #f7f3ed; box-shadow: none; border: 1px solid #eae0d6; margin-bottom: 0;">
+            <p style="font-size: 1.05rem; text-align: center;">
+                若你已准备好，可以随时打开收藏夹里的那个位置。<br>
+                或者直接前往 <a href="https://official-site-i-game.com.cn" class="highlight-link">爱游戏</a> —— 像老朋友一样，不用打招呼。
+            </p>
+            <p style="text-align: center; margin-top: 0.8rem; color: #6f6257; font-size: 0.9rem;">
+                下次见，也许就在明天。
+            </p>
+        </div>
+
+    </main>
+
+    <!-- 页尾 -->
+    <footer class="site-footer">
+        <p>—— 杂志式手记 · 献给偶尔想回来坐坐的你 ——</p>
+        <p class="note">页面内容仅供浏览参考 · 保持开放 · 不问归期</p>
+    </footer>
+
+</body>
+</html>
