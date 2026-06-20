@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中彩网 · 站点导航与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f7;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .page {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* 卡片系统 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9edf2;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Hero 区 */
+        .hero {
+            text-align: center;
+            padding: 2.8rem 1.5rem 2.2rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* 正文排版 */
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            color: #0f172a;
+            border-left: 4px solid #94a3b8;
+            padding-left: 0.9rem;
+        }
+        p {
+            margin-bottom: 1.3rem;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+        .lead {
+            font-size: 1.08rem;
+            color: #334155;
+        }
+        .inset-quote {
+            background: #f8fafc;
+            border-left: 4px solid #cbd5e1;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0 1.5rem;
+            border-radius: 0 12px 12px 0;
+            color: #1e293b;
+            font-style: normal;
+            font-size: 0.97rem;
+        }
+        .inset-quote::before {
+            content: "💡 提示";
+            display: block;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 特点网格 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+        .feat-item {
+            background: #f9fafc;
+            border-radius: 14px;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid #eef2f6;
+        }
+        .feat-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: #0f172a;
+        }
+        .feat-item span {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* FAQ 摘要（简洁列表） */
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 0;
+        }
+        .faq-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            gap: 0.6rem;
+        }
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            min-width: 5.5rem;
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+        .faq-a {
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        /* 访问句 + 链接 */
+        .visit-block {
+            background: #f9fafc;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1.8rem 0 0.5rem;
+            border: 1px solid #e6ebf1;
+            text-align: center;
+        }
+        .visit-block p {
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            color: #1e293b;
+        }
+        .visit-block .link-embed {
+            font-size: 1.1rem;
+        }
+        .visit-block a {
+            color: #1e4a7a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 2px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .visit-block a:hover {
+            border-bottom-color: #1e4a7a;
+            color: #0b2b4a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-list li {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .faq-q {
+                min-width: auto;
+            }
+            .visit-block {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 卡片 -->
+    <div class="card hero">
+        <h1>中彩网 · 从名字到用途</h1>
+        <div class="sub">
+            一个围绕福利彩票与公众信息服务的站点，面向日常查询、规则了解和资讯浏览。
+        </div>
+    </div>
+
+    <!-- 正文卡片 1：定位与背景 -->
+    <div class="card">
+        <p class="lead">
+            当你看到「中彩网」这个名字，很自然会联想到它与彩票信息有关。这个网站正是围绕彩票资讯、开奖结果、玩法说明等内容搭建的平台，适合有相关需求的用户快速获取信息。
+        </p>
+        <p>
+            网站没有复杂的注册或付费门槛，页面结构偏向于信息展示——你可以在上面浏览不同彩种的开奖号码、派奖公告以及一些基础规则说明。对于想了解彩票玩法或核对开奖结果的人来说，这是一个比较直接的渠道。
+        </p>
+        <div class="inset-quote">
+            如果你是第一次访问，建议先从「开奖公告」或「玩法介绍」栏目入手，这能帮你快速建立对网站内容框架的认知。
+        </div>
+    </div>
+
+    <!-- 正文卡片 2：特点与使用场景 -->
+    <div class="card">
+        <h2>特点与常见使用场景</h2>
+        <p>
+            网站的信息组织方式偏向传统门户风格，核心内容模块清晰。以下是一些你可以预期的功能特点，以及对应的使用场景。
+        </p>
+        <div class="feature-grid">
+            <div class="feat-item">
+                <strong>开奖信息汇聚</strong>
+                <span>多个彩种的历史开奖号码、期次数据集中展示，便于核对与统计。</span>
+            </div>
+            <div class="feat-item">
+                <strong>规则与公告</strong>
+                <span>玩法说明、派奖活动、调整通知等官方公告的转载或摘要。</span>
+            </div>
+            <div class="feat-item">
+                <strong>资讯内容</strong>
+                <span>部分行业动态、彩市新闻，帮助了解政策与市场变化。</span>
+            </div>
+            <div class="feat-item">
+                <strong>无需登录</strong>
+                <span>绝大多数内容可直接浏览，不需要注册或下载额外应用。</span>
+            </div>
+        </div>
+        <p style="margin-top: 1.2rem;">
+            无论是定期查看开奖结果，还是想对比不同玩法的规则，<a href="https://hub-zhcw.com" style="color:#1e4a7a; font-weight:500; text-decoration:underline; text-underline-offset:3px;">中彩网</a>都能提供一个相对稳定的信息入口。对于偶尔关注彩票的用户来说，它比搜索引擎零散的结果更集中。
+        </p>
+    </div>
+
+    <!-- 正文卡片 3：FAQ 摘要 —— 快速澄清 -->
+    <div class="card">
+        <h2>常见疑问 · 快速说明</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">是中彩网官方吗？</span>
+                <span class="faq-a">该网站提供彩票相关信息，但并非中国福利彩票发行管理中心的唯一官方站点。建议结合官方渠道一起参考。</span>
+            </li>
+            <li>
+                <span class="faq-q">能直接购彩吗？</span>
+                <span class="faq-a">网站本身不提供在线购彩功能。它主要是信息展示平台，购彩需通过合法实体网点或国家认可的线上渠道。</span>
+            </li>
+            <li>
+                <span class="faq-q">数据更新及时吗？</span>
+                <span class="faq-a">一般情况下开奖结果会在开奖后较短时间内更新，但具体时效受运营维护影响。重大延迟时可参考福彩官网。</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 访问句卡片 -->
+    <div class="card">
+        <h2>如何开始使用</h2>
+        <p>
+            如果你只是想快速确认某个玩法的规则，或者定期浏览开奖号码，不需要额外准备。直接打开网站，从导航栏进入对应栏目即可。
+        </p>
+        <div class="visit-block">
+            <p>想进一步了解？这里有一个最直接的起点——</p>
+            <div class="link-embed">
+                前往 <a href="https://hub-zhcw.com">中彩网</a> 浏览开奖与资讯。
+            </div>
+        </div>
+        <p style="margin-top: 1rem; color: #475569; font-size: 0.95rem;">
+            无论你是第一次接触，还是想换个更集中的信息来源，它都算得上一个值得收藏的书签。
+        </p>
+    </div>
+
+    <!-- 底部留白 -->
+    <div style="height: 1rem;"></div>
+</div>
+</body>
+</html>
