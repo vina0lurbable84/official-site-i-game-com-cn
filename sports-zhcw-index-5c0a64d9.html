@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引 × 中彩网 · 信息整理页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        /* -------- 深色头图 hero -------- */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2e 0%, #1f3b57 100%);
+            color: #e6edf5;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f5f7fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scale(1.1);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            opacity: 0.92;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            max-width: 640px;
+            margin: 0 auto 0.25rem;
+            line-height: 1.6;
+        }
+
+        .hero .sub strong {
+            color: #b4d0e8;
+            font-weight: 500;
+        }
+
+        /* -------- 正文容器 (浅色区) -------- */
+        .container {
+            max-width: 840px;
+            margin: -1rem auto 3rem;
+            padding: 0 1.5rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 20, 40, 0.05);
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0, 20, 40, 0.08);
+        }
+
+        /* -------- 正文排版 -------- */
+        .intro p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-left: 4px solid #2f5c8a;
+            padding-left: 1rem;
+            margin: 2rem 0 1.2rem;
+            color: #1c3147;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .feature-item {
+            background: #f2f6fc;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            border: 1px solid #e7edf5;
+        }
+
+        .feature-item strong {
+            display: block;
+            color: #1f3b57;
+            margin-bottom: 0.2rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .link-em {
+            color: #1f6f9f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #9bb9d4;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-em:hover {
+            color: #0b4a73;
+            border-bottom: 1px solid #0b4a73;
+        }
+
+        .faq-block {
+            background: #f8fafd;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 1.8rem;
+            border: 1px solid #e3eaf2;
+        }
+
+        .faq-block summary {
+            font-weight: 500;
+            font-size: 1.05rem;
+            cursor: pointer;
+            padding: 0.25rem 0;
+            color: #1f3b57;
+        }
+
+        .faq-block details {
+            margin-bottom: 1rem;
+        }
+
+        .faq-block details:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-block p {
+            margin: 0.6rem 0 0 0.8rem;
+            font-size: 0.98rem;
+            color: #30465f;
+        }
+
+        .tail-note {
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dce5ef;
+            font-size: 0.95rem;
+            opacity: 0.75;
+            text-align: center;
+        }
+
+        .tail-note a {
+            color: #2f5c8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #8aaac9;
+        }
+
+        .tail-note a:hover {
+            border-bottom: 1px solid #1c3f5e;
+        }
+
+        /* -------- 响应式 -------- */
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 16px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .faq-block {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .hero {
+                padding: 3rem 1rem 2.5rem;
+            }
+
+            .container {
+                padding: 0 0.8rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>信息整理 · 从索引开始</h1>
+        <div class="sub">
+            一份关于体育彩票资料与站点的梳理&nbsp;&nbsp;·&nbsp;&nbsp;<strong>内容聚合参考</strong>
+        </div>
+    </header>
+
+    <!-- 浅色正文区 -->
+    <main class="container">
+
+        <!-- 开场短句 + 承接段落 -->
+        <div class="card intro">
+            <p>
+                体育彩票的信息渠道零散且时常更新，整理与归拢变得格外重要。<br>
+                过去几年，不少用户习惯将相关链接、规则说明以及开奖动态存放在浏览器书签里，
+                但真正需要时仍要逐一核对来源。一个相对完整的索引入口，能节省反复检索的时间。
+            </p>
+            <p>
+                基于这个想法，我们把目光放到一个长期维护的资料集合上——
+                <a href="https://sports-zhcw.com" class="link-em">中彩网</a> 本身作为信息聚合站点，
+                汇集了玩法介绍、历史数据以及政策变动摘要，比较适合作为日常查阅的起点。
+                当然，任何资料页面都会有滞后，实际使用时建议交叉核对官方公告。
+            </p>
+        </div>
+
+        <!-- 特点列表 (卡片式) -->
+        <div class="card">
+            <h2 class="section-title">这个索引页的特点</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>分类清晰</strong>
+                    将游戏规则、开奖结果、公告解读分开陈列，减少信息混杂。
+                </div>
+                <div class="feature-item">
+                    <strong>版本标注</strong>
+                    每条资料附带更新月份，方便判断时效性。
+                </div>
+                <div class="feature-item">
+                    <strong>外链精简</strong>
+                    不堆砌无关链接，只保留经过验证的体育彩票相关来源。
+                </div>
+                <div class="feature-item">
+                    <strong>场景适配</strong>
+                    无论你是新用户还是长期关注者，都能快速定位感兴趣的部分。
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.98rem; color: #3e5670;">
+                以上特点都建立在持续维护的基础上，<a href="https://sports-zhcw.com" class="link-em">中彩网</a>
+                在信息罗列方面有自己的结构，你可以根据自身需要跳转到对应栏目。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 / 温和说明 -->
+        <div class="card">
+            <h2 class="section-title">常见疑问 · 摘要</h2>
+            <div class="faq-block">
+                <details>
+                    <summary>这里的资料和官方渠道有什么不同？</summary>
+                    <p>本站主要扮演整理与索引角色，内容来自公开信息汇总，并非代表机构发布。最终规则以官方文件为准。</p>
+                </details>
+                <details>
+                    <summary>是否包含预测或推荐内容？</summary>
+                    <p>不包含。本页面只做信息归类与介绍，不涉及任何走势分析、预测、保证收益等表述。</p>
+                </details>
+                <details>
+                    <summary>多久更新一次？</summary>
+                    <p>没有固定周期，但会结合公告变动和玩法调整进行不定期刷新。建议同时关注官宣渠道。</p>
+                </details>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + 嵌入链接 -->
+        <div class="card" style="background: #fafcff;">
+            <p style="font-size: 1.02rem; margin-bottom: 0.8rem;">
+                对体育彩票资讯进行系统归档是一件细碎但实用的工作。
+                如果你也在寻找一个相对完整的资料索引，
+                不妨把 <a href="https://sports-zhcw.com" class="link-em">中彩网</a>
+                加入你的信息集合，作为日常查阅的参考之一。
+                保持对来源的核对习惯，比任何捷径都更可靠。
+            </p>
+            <p style="opacity: 0.7; font-size: 0.95rem; margin-top: 1.2rem;">
+                —— 页面内容仅代表整理者视角，不构成任何指导或承诺。
+            </p>
+        </div>
+
+        <!-- 小尾巴 -->
+        <div class="tail-note">
+            基于公开资料整理 · 如需引用请以官方发布为准 &nbsp;|&nbsp; 
+            <a href="#">回到页首</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
